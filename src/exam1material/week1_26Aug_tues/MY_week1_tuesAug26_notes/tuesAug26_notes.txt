@@ -177,7 +177,7 @@ and we know that the "if" part is true?
 If I don't hear my alarm, then I will be late for class.
 I am late for class.
 
---> What can I conclude?
+--> What can I conclude? nothing
 
 
 
@@ -189,7 +189,7 @@ I am late for class.
 If I don't hear my alarm, then I will be late for class.
 I hear my alarm.
 
---> What can I conclude? 
+--> What can I conclude? nothing
 
 
 
@@ -203,7 +203,7 @@ I hear my alarm.
 If I don't hear my alarm, then I will be late for class.
 I'm not late for class.
 
---> What can I conclude?
+--> What can I conclude? i did hear my alarm
 
 
 
@@ -241,8 +241,8 @@ if (num < 4 || x >= 10) {
 
 --> suppose y is 17 here. What do we know?
 
-
-
+condition is false
+num >= 4 AND x < 10
 
 /////////////////////////////////////////////////////////
 
@@ -306,7 +306,8 @@ Eve says, "I am a knave or Fred is a knight."
 
 What are Eve and Fred? 
 
-
+if eve is a knight, for her statement to be true, fred needs to be a knight. TRUE
+if eve is a knave, her statement would be true no matter what fred is, which shouldnt happen. FALSE
 
 (what does the "or" mean?) 
 
@@ -323,16 +324,17 @@ You see two different inhabitants, Ava and Bob.
 Ava says that Bob is a knave.
 Bob says, "Neither Ava nor I are knaves."
 
-
+bob rewritten: "ava and I are knights"
 
 What are Ava and Bob?
 
-
+suppose ava is a knight, then from her statement, bob is a knave. bobs statement is correctly false since they arent both knights. TRUE
+suppose ava is a knave, then from her statement, bob is a knight. bobs statement is incorrectly false since ava isnt a knight. FALSE
 
 
 What does "neither" mean?
-    When is Bob's statement true? 
-    When is Bob's statement false? 
+    When is Bob's statement true? if they were both knights
+    When is Bob's statement false? if one of them was a knave
 
 
 
