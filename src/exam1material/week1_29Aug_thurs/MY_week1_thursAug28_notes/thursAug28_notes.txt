@@ -43,10 +43,11 @@ else {
     statements3;
 }
 
+--> when is the first (if) condition false?
+    x >= 3 && y <= 4
 
-
---> is it possible for "statements2" to execute?7
-
+--> is it possible for "statements2" to execute? NO
+no, if y is 7 the first condition of the first if statement will always be met
 
 
 
@@ -68,11 +69,18 @@ Mae tells you, "Bill would tell you that I am a knave."
 
 What types are Sarah, Bill, and Mae?
 
+All knaves.
 
 (How might we simplify everything?)
 
+Sarah: Bill is a knight
+Bill: Mae is a knight
+Mae: Bill says Mae is a knave    
 
-    
+Suppose Sarah is a knight. Then from her statement, Bill would have to be a knight, and from his statement, Mae would have to be a knight. Mae's statement would be a lie, which is impossible.
+
+Suppose Sarah is a knave. then from her statement, Bill would be a knave, and from his statement, Mae would be a knave. Mae's statement would be correctly false. 
+
 
 
 ////////////////////////////////////
@@ -89,7 +97,13 @@ Unicorn says: "Yesterday was one of my lying days, too."
 
 What day is it?
 
+Suppose Lion is telling the truth.
+Unicorn would have to be lying since it would be a thursday, which would make her statement correctly false.
 
+Suppose Lion is lying. It would have to be a monday.
+Unicorn would therefore be telling the truth, which is impossible since unicorn tells the truth on sundays too
+
+It is thursday.
 
 ////////////////////////////////
 
@@ -108,8 +122,7 @@ The second one says: "I'm Tweedledee."
 
 Which is which? What day is it?
 
-
-
+Any day but Sunday, one lies one tells truth. They would both give the same name. Must be sunday. They are who they say they are
 
 
 
@@ -139,8 +152,15 @@ The second one says: "I'm Tweedledee!"
 
 Who gets the rattle?
 
+Suppose the first twin is telling the truth. The secnod one is Tweedledum, therefore the rattle goes to the first one, which is Tweedledee.
+
+Suppose the second twin is telling the truth. The first one would be lying, therefore the rattle goes to Tweedledum, and the first one is Tweedledum since the second one is Tweedledee.
+
+We always give the rattle to the first twin.
+
 Who is who?
 
+We don't know.
 
 ///////////////////////////////////////////
 
@@ -219,6 +239,7 @@ Basic operations:
 Basic logic gates (draw on board)
 
 
+
 gates still used to design circuits
 
 
@@ -236,28 +257,28 @@ AND:
 
 p q  #  p ∧ q
 --------------
-T T  #    
-T F  #    
-F T  #     
-F F  #    
+T T  #  T  
+T F  #  F  
+F T  #  F   
+F F  #  T  
 
 
 OR:
 
 p q  #  p ∨ q
 --------------
-T T  #    
-T F  #    
-F T  #    
-F F  #    
+T T  #  T  
+T F  #  T  
+F T  #  T  
+F F  #  F  
 
 
 NOT:
 
 p  # ¬p
 --------
-T  # 
-F  # 
+T  #  F
+F  #  T
 
 ////////////////////////////////////////////////
 
@@ -275,16 +296,16 @@ Otherwise we have not.
 
 p q  #  p → q
 --------------
-T T  #    
-T F  #      
-F T  #    
-F F  #     
+T T  #    T
+T F  #    F  
+F T  #    T
+F F  #    T 
 
 /////////////////////////////////////////
 
 How does the implies operator relate to programming?
 
-
+if, conditional statements
 
 //////////////////////////////////////////
 
