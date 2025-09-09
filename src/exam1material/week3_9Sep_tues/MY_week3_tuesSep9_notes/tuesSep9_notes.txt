@@ -22,22 +22,37 @@ Associativity.
 
 Meaning?
 
+(p and q) and r equivalent to p and (q and r)
 
 Which operators are associative? Which are not?
 
+associative: and, or, 
+not associative: implies
+
 How to prove each case?
+
 
 
 ////////////////////////////////
 
 Commutativity.
 
-Meaning?
+Meaning? order doesnt matter
+
+p and q equivalent to q and p
 
 Which operators are commutative? Which are not?
 
+commutative: and, or
+not communative: implies
+
 How to prove each case?
 
+p -> q vs q -> p
+
+p = T, q = F
+
+false vs true
 
 ////////////////////////////////
 ∧ ∨ ¬ →
@@ -45,15 +60,16 @@ How to prove each case?
 
 Satisfiability.
 
---> definition? 
+--> definition? for a logical statement, there is at 
+least one truth assignment that evaluates to true
 
---> how to prove something is satisfiable?
+--> how to prove something is satisfiable? 
 
-
+just need one truth assignment where the statement outputs true
 
 --> how to prove something is not satisfiable?
 
-
+full truth table, show it is contradictory (all output false)
 
 ////////////////////////////
 
@@ -61,6 +77,12 @@ SAT
 
 straightforward approach to checking all possibilities:
 
+logical statement, variables p, q, etc.
+
+generate all truth assignments, try them all
+n variables, 2^n truth assignments
+
+this is an exponential time algorithm
 
 
 
@@ -72,7 +94,7 @@ can we solve a problem in polynomial time?
 
 can we check a solution to a problem in polynomial time?
 
-
+not be exponential time, it would be polynomial time
 
 ////////////////////////
 
@@ -93,9 +115,10 @@ An argument is of the form:
 
 
 --> When is an argument considered valid?
+implies statement, only false when T->F
 
-
-
+valid: anytime all premises are true, the conclusion is true
+invalid: can find a time when all the premises are true, but the conclusion is false
 
 ///////////////////////////////////////
 
@@ -118,15 +141,25 @@ I want to prove:
 
 Propositional atoms:
 
+p: I am in the CS dept
+q: I am in the ECE dept
+r: I can log into the CS lab computers
 
 
 Translations:
 
+premises:
+p or q
+not q
+p -> r
 
+Conclusion:
+r and p
 
 --> How to prove with a truth table?
 
-
+find truth assignments where all three premise sare true
+make sure the conclusion is true for those truth assignments
 
 
 ////////////////////////////////
@@ -185,13 +218,20 @@ Proposed conclusion:
 
 1) Translate to propositional logic
 
+p: it is sunny
+q: i wear sunscreen
 
+premises: p -> q, q
+conclusion: p
 
 
 
 2) How can we show it is invalid?
 
+counterexample:
+p = F, q = T
 
+makes both premises true
 
 
 ////////////////////////////////
