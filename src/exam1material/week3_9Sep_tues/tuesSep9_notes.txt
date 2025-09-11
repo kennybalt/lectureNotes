@@ -4,7 +4,7 @@ Sireum fonts
 
 HW 2 due today
 
-HW 3 will be posted after class, due next Tues
+HW 3 will be posted after class, due next Tuesday
 
 ////////////////////////////
 
@@ -18,26 +18,49 @@ Today:
 ∧ ∨ ¬ →
 ///////////////////////////////
 
+How to prove two statements ARE equivalent?
+
+make truth table for each one
+show that for every truth assignment, the two statements
+have the same output 
+
+
+How to prove two statements are NOT equivalent?
+
+find one truth assignment where the output differs for the
+two statements
+
+
+////////////////////////////////
+
 Associativity.
 
 Meaning?
 
+(p ∧ q) ∧ r equivalent to p ∧ (q ∧ r)
+
 
 Which operators are associative? Which are not?
 
-How to prove each case?
-
+ARE associative: and, or, 
+NOT associative: implies
 
 ////////////////////////////////
 
 Commutativity.
 
-Meaning?
+Meaning? order doesn't matter
+
+p ∧ q  equivalent to q ∧ p
 
 Which operators are commutative? Which are not?
 
-How to prove each case?
+ARE commutative: and, or
+NOT commutative: implies
 
+p -> q vs q -> p
+
+p = T, q = F
 
 ////////////////////////////////
 ∧ ∨ ¬ →
@@ -45,13 +68,17 @@ How to prove each case?
 
 Satisfiability.
 
---> definition? 
+--> definition? for a logical statement, there is at 
+least one truth assignment that evaluates to true
 
 --> how to prove something is satisfiable?
 
+just need one truth assignment where the statement outputs true
 
 
 --> how to prove something is not satisfiable?
+
+full truth table, show it is contradictory (all output false)
 
 
 
@@ -61,6 +88,13 @@ SAT
 
 straightforward approach to checking all possibilities:
 
+logical statement, variables p, q, etc.
+
+generate all truth assignments, try them all
+n variables, 2^n truth assignments
+
+
+this is an exponential time algorithm
 
 
 
@@ -72,6 +106,7 @@ can we solve a problem in polynomial time?
 
 can we check a solution to a problem in polynomial time?
 
+not be exponential time, it would be polynomial time
 
 
 ////////////////////////
@@ -93,8 +128,12 @@ An argument is of the form:
 
 
 --> When is an argument considered valid?
+implies statement, only false when T->F 
 
 
+valid: anytime all premises are true, the conclusion is true
+invalid: can find a time when all premises true,
+        but the conclusion is false
 
 
 ///////////////////////////////////////
@@ -118,15 +157,27 @@ I want to prove:
 
 Propositional atoms:
 
+p: I am in the CS dept
+q: I am in the ECE dept
+r: I can log in to the CS lab computers
+
 
 
 Translations:
 
+Premises: 
+p ∨ q 
+¬q
+p → r 
+
+Conclusion: 
+r ∧ p
 
 
 --> How to prove with a truth table?
 
-
+find truth assignments where all three premises are true
+make sure the conclusion is true for those truth assignments
 
 
 ////////////////////////////////
@@ -171,6 +222,9 @@ We wish to prove:
 
 When is an argument invalid?
 
+find one truth assignment where all the premises were true,
+conclusion was false
+
 
 
 
@@ -185,13 +239,19 @@ Proposed conclusion:
 
 1) Translate to propositional logic
 
+p: it is sunny
+q: I wear sunscreen
 
-
+Premises: p -> q, q 
+Conclusion: p 
 
 
 2) How can we show it is invalid?
 
+counterexample:
+p = F, q = T
 
+makes both premises true, conclusion false
 
 
 ////////////////////////////////
@@ -209,13 +269,17 @@ Showing arguments are invalid in Logika
 ////////////////////////////
 
 Does it matter if the conclusion is true when 
-    the premises aren't?
+    the premises aren't? NO
 
 
 Does it matter if one premise is true when the other isn't?
+    NO, only care when all premises are true
+
 
 Does it matter if the conclusion is false when some 
     (but not all) of the premises are true?
+
+NO, doesn't matter
 
 ////////////////////////////
 
@@ -341,6 +405,9 @@ and also:
 
 What could we claim with AndI?
 
+(a ∨ ¬b) ∧ (c → d)
+
+
 
 
 
@@ -395,6 +462,10 @@ Use natural deduction to prove: b ∧ c
 (and1.sc)
 
 /////////////////////////////////
+
+<--- stopped here, will continue Thursday
+
+//////////////////////////////////
 
 Prove the following sequent (and2.sc)
 
