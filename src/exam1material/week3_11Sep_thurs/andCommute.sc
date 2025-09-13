@@ -15,9 +15,9 @@ import org.sireum.justification.natded.prop._
         1 ( p & q ) by Premise,
 
         //extract the left side
-        2 ( p ) by AndE1(1),
-        3 ( q ) by AndE2(1),
-        4 ( q & p ) by AndI(3, 2)
+        2 ( q ) by AndE2(1),
+        3 ( p ) by AndE1(1),
+        4 ( q & p ) by AndI(2, 3)
     )
   )
 }
