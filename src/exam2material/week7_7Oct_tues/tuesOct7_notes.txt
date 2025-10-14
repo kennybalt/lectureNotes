@@ -1,0 +1,471 @@
+HW 5 due tonight
+(check link!)
+
+HW 6 will be posted after class, due next Tuesday
+    
+
+///////////////////////
+
+Today:
+
+- More with evaluating predicate logic statements
+- Predicate logic translations with sets of numbers
+- DeMorgan's laws for quantifiers
+- Introduction to rules for quantifiers in natural deduction
+
+
+////////////////////////
+
+Domain: Snickers, Kit Kat, Skittles, Pay Day, Starburst
+
+Predicates: 
+    HasChocolate(x)
+    IsBrown(x)
+    ContainsPeanuts(x)
+
+///
+
+Statements:
+
+Don't do this: ∃ x PayDay(x) V ...
+
+
+
+HasChocolate(PayDay) V ContainsPeanuts(KitKat)
+
+    translation?  Pay Day has chocolate or Kit Kat has peanuts
+    true or false? false
+
+
+///
+Domain: Snickers, Kit Kat, Skittles, Pay Day, Starburst
+
+¬(∀ x (HasChocolate(x) → ContainsPeanuts(x)))
+
+(without negation: all candy with chocolate also contains peanuts)
+
+    translation? not all candy with chocolate contains peanuts
+    true or false? true (because Kit Kat has chocolate but no peanuts)
+
+
+
+
+///
+Domain: Snickers, Kit Kat, Skittles, Pay Day, Starburst
+
+∀ x (¬ContainsPeanuts(x))
+
+    translation? All candy doesn't have peanuts
+    true or false? false (Pay Day has peanuts)
+
+
+///
+Domain: Snickers, Kit Kat, Skittles, Pay Day, Starburst
+
+¬(∃ x IsBrown(x))
+
+    translation? There isn't a candy that is brown
+    true or false? false (Snickers is brown)
+
+///
+Domain: Snickers, Kit Kat, Skittles, Pay Day, Starburst
+
+∃ x ¬IsBrown(x)
+
+    translation? There is a candy that is not brown
+    true or false? true (Skittles are not brown)
+
+///
+Domain: Snickers, Kit Kat, Skittles, Pay Day, Starburst
+
+∃ x (HasChocolate(x) → ContainsPeanuts(x))
+
+
+
+    translation? 
+        There is a candy and if that candy has chocolate, then it contains peanuts
+
+    (HasChocolate(Snickers) -> ContainsPeanuts(Snickers)) V 
+        ... (HasChocolate(Kit Kat) -> ContainsPeanuts(Snickers))
+
+    true or false? true (both because Snickers has chocolate and peanuts
+        and also because Skittles doesn't have chocolate)
+
+probably want: ∃ x (HasChocolate(x) ⋀ ContainsPeanuts(x))
+
+This would be: there is a candy that has chocolate and contains peanuts
+
+/////////////////////////
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+/////////////////////////
+
+For all: usually connect with...→
+
+
+
+There exists: usually connect with...⋀
+
+
+
+/////////////////
+
+Evaluating predicate logic statements
+
+Our domain is k1...kn
+
+1) ∀ x P(x)
+    true when: P(k) is true for every k in our domain
+    false when: we can find one k in our domain where P(k) is false
+
+2) ∃ x P(x)
+    true when: we can find one k in our domain where P(k) is true
+    false when: P(k) is false for every k in our domain
+
+3) ¬(∀ x P(x))
+    true when: we can find one k where P(k) is false
+    false when: P(k) is true for every k
+
+4) ¬(∃ x P(x))
+    true when: every k made P(k) false
+    false when: we can find a k where P(k) is true
+
+5) ∀ x ¬P(x)
+    true when: every k makes P(k) false
+    false when: we can find one k that makes P(k) true
+
+6) ∃ x ¬P(x)
+    true when: one k makes P(k) false
+    false when: all k make P(k) true
+
+
+/////////////////
+
+Domain: ℤ (the integers)
+
+
+What do these mean in English? Are they true?
+
+
+∀ n ∃ m (n^2 < m)
+
+    The square of every integer is less than some other integer
+
+    true. Whatever n is, choose m = n^2 + 1 and it will be an integer
+        bigger than n^2
+
+
+∀ x ∃ y (x == y^2)
+    Every integer is the square of another integer
+
+    All integers are perfect squares.
+
+    false. 3 is an integer and it is not a perfect square.
+
+
+∀ n ∃ m (n^2 == m)
+    The square of all integers is also an integer.
+
+    true. (integers are closed under multiplication)
+
+
+∃ m ∀ n (n^2 == m)
+    There is ONE integers that equals the square of all other integers
+   
+    false (no such number exists)
+
+/////////////////////////
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+/////////////////////////
+
+
+Write the following in predicate logic (Domain: ℤ):
+----------------------------------------
+
+The sum of two negative integers is negative
+
+two quantifiers (for two variables)
+
+∀ n ∀ m (n < 0 ⋀ m < 0 → n+m < 0)
+
+true (adding two negative numbers will only give a result that is
+    more negative)
+
+
+The difference of two positive integers is
+not necessarily positive
+
+∃ n ∃ m (n > 0 ⋀ m > 0 ⋀ n-m <= 0)
+
+OR:
+
+¬(∀ n ∀ m (n > 0 ⋀ m > 0 → n-m > 0))
+
+true (n = 5, m = 20 , 5-20 is <= 0)
+
+
+/////////////////////////
+
+In-class quiz
+
+
+/////////////////////////
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+/////////////////////////
+
+Equivalence: DeMorgan's law (part 1).
+
+¬(∃ x P(x))         ∀ x (¬P(x))
+
+
+suppose our domain is k1 through kn
+
+
+¬(∃ x P(x)) is  equivalent to...¬(P(k1) V ... V P(kn))
+which is: ¬P(k1) ⋀ ... ⋀ ¬P(kn)
+
+
+/////////////////////////
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+/////////////////////////
+
+Equivalence: DeMorgan's law (part 2).
+
+¬(∀ x P(x))       ∃ x (¬P(x))
+
+
+suppose our domain is k1 through kn
+
+¬(∀ x P(x)) is equivalent to...
+
+
+
+
+//////////////////////////////////////
+
+Apply DeMorgan's laws: example
+
+
+1) Express the statement in predicate logic
+
+2) Negate the statement so no negation is outside a quantifier
+or outside a statement with logical connectives
+
+    Reminder:
+        p → q is equivalent to (OR statement): (¬p ⋁ q)
+        ¬(p ⋀ q) is equivalent to: ¬p ⋁ ¬q
+        ¬(p ⋁ q) is equivalent to: ¬p ⋀ ¬q
+
+///
+Domain: students
+    in5th(x): student x is in 5th grade
+    wonPrize(x): student x won a prize
+    friendsWith(x, y): student x is friends with student y
+
+///
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+/////////////////////////
+
+All prize-winners were 5th graders
+
+Translation: ∀ x (wonPrize(x) → in5th(x))
+
+Negation: ¬(∀ x (wonPrize(x) → in5th(x)))
+
+∃ x ¬(wonPrize(x) → in5th(x))
+∃ x ¬(¬wonPrize(x) ⋁ in5th(x))
+∃ x (wonPrize(x) ⋀ ¬in5th(x))
+
+Translation of negation: There is a prize winner who wasn't a 5th grader
+
+///
+
+A 5th grade prize winner isn't friends with anyone
+
+∃ x ∀ y(in5th(x) ⋀ wonPrize(x) ⋀ ¬friendsWith(x, y))
+
+translation: 
+
+negate: ¬(∃ x ∀ y(in5th(x) ⋀ wonPrize(x) ⋀ ¬friendsWith(x, y)))
+∀ x ∃ y ¬((in5th(x) ⋀ wonPrize(x)) ⋀ ¬friendsWith(x, y))
+∀ x ∃ y (¬(in5th(x) ⋀ wonPrize(x)) ⋁ friendsWith(x, y))
+
+∀ x ∃ y ((in5th(x) ⋀ wonPrize(x)) → friendsWith(x, y))
+
+translation of negation: 
+    All 5th grade prize winners are friends with someone
+
+////////////////////////////////////
+
+<--- stopped here, will continue on Thursday
+
+////////////////////////////////////
+
+Arguments in predicate logic
+
+Set of premises
+Conclusion
+
+Argument is VALID: regardless of domain,
+    whenever all the premises are true,
+    then the conclusion is also true
+
+Argument is INVALID: we can find a domain where
+    all the premises are true but the conclusion is false
+
+
+
+Examples -- are the following arguments valid?
+
+///
+
+Premises: ∀ x (P(x) → Q(x)), ∃ x P(x)
+Conclusion: ∃ x Q(x)
+
+Valid or not? 
+
+
+///
+
+Premises: ∀ x P(x) : everyone in my domain is P-ish
+Conclusion: ∃ x P(x): there is someone in domain who is P-ish
+
+Valid or not? 
+
+/////////////////////////////////
+
+Proofs in predicate logic.
+
+- want to formalize the kind of reasoning from above
+
+- want valid inference rules that do NOT depend on the domain
+    (there is no way to do the equivalent of a
+    "truth table proof" in predicate logic...
+        there are infinitely many domains!)
+
+- add inference rules on quantifiers to our deduction rules
+
+
+////////////////////////////////
+
+Writing predicate logic statements in Logika
+
+In Logika, ∀ x P(x) is written as:
+
+    ∀ ((x: T) => P(x))
+
+
+
+In Logika, ∃ x P(x) is written as:
+
+    ∃ ((x: T) => P(x))
+
+
+
+--> what is "T"?
+
+
+Settings->Command Palette->Tasks (run task)->Sireum slang template->
+    Insert a for-all quantification
+
+This will insert the statement:
+
+∀((ID: TYPE) => CLAIM)
+
+
+
+(similarly, insert a there exists statement)
+
+
+You can also edit the keyboard shortcuts for these templates
+
+////////////////////////////////
+
+When you have homework or we do examples, the proof files
+will look like this:
+
+// #Sireum #Logika
+
+import org.sireum._
+import org.sireum.justification._
+import org.sireum.justification.natded.prop._
+import org.sireum.justification.natded.pred._
+
+@pure def ProofName[T](pred1: T => B @pure, pred2: T => B @pure,
+                ..., indiv1: T, indiv2: T, ...): Unit = {
+    Deduce(
+        (comma-separated list of premises)
+            ⊢
+        (conclusion)
+
+        Proof(
+            //the actual proof steps go here
+        )
+    )
+}
+
+///////////////////////////////
+
+For-all elimination (AlLE):
+
+           ∀ ((x: T) => P(x))
+AllE[T]:  ---------------------
+                   P(v)
+
+//where v is a particular individual in the domain
+//(i.e, v has type T)
+
+
+Idea:
+
+- if we know that a statement is true for ALL individuals in
+our domain
+
+
+...then what would we know about a specific individual
+in that domain?
+
+///////////////////////////////
+
+Syntax:
+
+(
+    ∀ ((x: T) => Human(x))
+)
+⊢
+( Human(Socrates) )
+
+Proof(
+    1 ( ∀ ((x: T) => Human(x)) )    by Premise,
+    2 Human(Socrates)               by ???
+)
+
+Note: This assumes "Socrates" and "Human" were both parameters
+to our proof function:
+
+
+@pure def Example[T](Human: T => B @pure, Socrates: T)
+
+
+
+///////////////////////////////
+
+Example (all1.sc)
+
+
+∀ x (inCIS301(x) → takenCIS200(x)), inCIS301(bob) ⊢ takenCIS200(bob)
+
+
+//////////////////////////////
+
+Next time:
+- continue with for all quantifier example
+- proofs and equivalences with the existential quantifier
+
