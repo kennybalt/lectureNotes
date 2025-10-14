@@ -40,15 +40,35 @@ import org.sireum.justification.natded.prop._
             13 (!B(a)) by AndE1(12),
             14 (!C(a)) by AndE2(12),
 
+            //use OrE to show contradiction with both P(a) and Q(a)
+            15 SubProof(
+              16 Assume (P(a)),
+              17 (B(a)) by ImplyE(9, 16),
+              18 (F) by NegE(17, 13)
+
+              //goal: F
+            ),
+            19 SubProof(
+              20 Assume (Q(a)),
+              21 (C(a)) by ImplyE(10, 20),
+              22 (F) by NegE(21, 14)
+            
+              //goal: F
+            ),
+            23 (F) by OrE(6, 15, 19),
+            
             //goal: F  
           ),
+          24 (!R(a)) by NegI(7),
           //use NegI
           //goal: !R(a)
         ),
+        25 (P(a) | Q(a) __>: !R(x)) by ImplyI(5),
         //use ImplyI
         //goal: P(x) | Q(x) __>: !R(x)
       ),
       //use AllI
+      26 (∀((x: T) => (P(x) | Q(x) __>: !R(x)))) by AllI[T](5)
     )
   )
 }
