@@ -86,9 +86,8 @@ in-class quiz
 ///////////////////////
 
 Exam 2:
-- Thursday, March 13 9:30-10:45
+- Thursday, October 16 9:30-10:45
 - Closed notes, closed computers
-- All "open-ended" problems - similar to HW 4-6
 
 - Natural deduction proofs in propositional logic, esp. with:
     ImplyI, NegE, NegI, BottomE, PbC
