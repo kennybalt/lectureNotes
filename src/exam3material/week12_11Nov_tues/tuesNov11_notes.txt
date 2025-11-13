@@ -1,6 +1,6 @@
 HW 9 due tonight
 
-    Algebra* justfication for Mac users
+    Algebra* justification for Mac users
 
  
 HW 10 will be posted after class, due next Tues
@@ -40,7 +40,7 @@ Function contracts - just under function definition:
 Contract(
     Requires(
         precondition,
-        precondition,
+        precondition
     ),
     Ensures(
         postcondition,
@@ -93,23 +93,24 @@ Four steps:
 
 1) What should be done before calling the function?
 
-
+prove its preconditions using what I am passing as parameters
 
 
 2) What can the function itself do with the preconditions?
 
-
+list them as premises
 
 
 3) What must the function do with the postconditions?
 
-
+show that they are all true based on the value being returned 
 
 
 4) What can the calling code do with the postcondition after
     the function returns? 
 
-
+list them as premises using the parameters they passed and the variable
+    they are using to store the return
 
 
 
@@ -118,7 +119,9 @@ Four steps:
 
 Example: put our abs code in a function (absFn.sc)
 
-(will finish this example on Thursday)
+/////////////////////////////////
+
+<-- stopped here, will continue Thursday
 
 /////////////////////////////////
 

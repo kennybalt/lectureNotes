@@ -22,27 +22,43 @@ if (a >= b) {
     max = a
 
     //what do we need to show here?
+    //max >= a, max >= b, max >= c
+    //max == a
   } else {
     max = c
 
     //what do we need to show here?
+    //max >= a, max >= b, max >= c
+    //max == c
   }
   //what do we put here?
+  //max >= a, max >= b, max >= c
+  //max == a | max == c
+
 } else {
   if (b >= c) {
     max = b
 
     //what do we need to show here?
+    //max >= a, max >= b, max >= c
+    //max == b
   } else {
     max = c
 
     //what do we need to show here?
+    //max >= a, max >= b, max >= c
+    //max == c
   }
+
+  //max >= a, max >= b, max >= c
+  //max == b | max == c
 
   //what goes here?
 }
 
 //what goes here?
+//max >= a, max >= b, max >= c
+//(max == a | max == c) | (max == b | max == c)
 
 println("Max between ", a, ", ", b, " and ", c, " is ", max)
 
@@ -50,3 +66,7 @@ println("Max between ", a, ", ", b, " and ", c, " is ", max)
 //what assert(s) do we want?
 
 //where do we need to prove the asserts?
+assert(max == a | max == b | max == c)
+assert(max >= a)
+assert(max >= b)
+assert(max >= c)

@@ -43,7 +43,10 @@ if (a >= b) {
   Deduce(
     //FILL IN
     //what can we state as premises?
-
+    1 ( max >= a ) by Premise,
+    2 ( max >= b ) by Premise,
+    3 ( max >= c ) by Premise,
+    4 ( max == a | max == b | max == c ) by Premise
   )
 } else {
   if (b >= c) {
@@ -74,6 +77,21 @@ if (a >= b) {
   //summary block
   Deduce(
     //what goes here?
+    1 ( max >= a ) by Premise,
+    2 ( max >= b ) by Premise,
+    3 ( max >= c ) by Premise,
+    4 ( max == b | max == c ) by Premise, //LHS from else/if, RHS from else/else
+
+    5 SubProof(
+      6 Assume (max == b),
+      7 ( max == a | max == b ) by OrI2(6),
+      8 ( max == a | max == b | max == c ) by OrI1(7)
+    ),
+    9 SubProof(
+      10 Assume (max == c),
+      11 ( max == a | max == b | max == c ) by OrI2(10)
+    ),
+    12 ( max == a | max == b | max == c ) by OrE(4,5,9)
   )
 }
 
