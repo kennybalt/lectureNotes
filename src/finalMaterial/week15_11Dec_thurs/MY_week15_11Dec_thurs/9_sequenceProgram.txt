@@ -4,17 +4,43 @@ program (including the assert at the bottom) would be verified in Logika's auto 
 def addToNeg(a: ZS, pos: Z): Unit = {
     Contract(
         //COMPLETE THE FUNCTION CONTRACT
-        
-
+        Requires(pos >= 0, pos < a.size)
+        Modifies(a),
+        Ensures(
+            //size doesn't change
+            //from pos on, we add 1 the negatives
+            ∀ (pos until a.size) (k => (In(a)(k) < 0 -> a(k) == In(a)(k) + 1)),
+            ∀ (pos until a.size) (k => (In(a)(k) >= 0 -> a(k) == In(a)(k))),
+            ∀ (0 until pos) (k => a(k) == In(a)(k))),
+        )
     )
     var i: Z = pos
 
     while (i < a.size) {
         Invariant(
             //COMPLETE THE LOOP INVARIANT BLOCK
+            Modifies(a, i),
             
-            
+            //bound the loop counter (i)
+            i >= pos, i <= a.size,
+
+            //size doesn't change
+            a.size == In(a).size,
+
+            //what has changed
+            ∀ (pos until i) (k => (In(a)(k) < 0 -> a(k) == In(a)(k) + 1)),
+
+            //what has NOT changed
+
+            //from i to end is still unchanged
+            ∀ (i until a.size) (k => (a(k) == In(a)(k))),
+
+            //any nonnegative values we've looked at are unchanged
+            ∀ (pos until i) (k => (In(a)(k) >= 0 -> a(k) == In(a)(k))),
+
+            //
         )
+    )
 
         if (a(i) < 0) {
             a(i) = a(i) + 1
