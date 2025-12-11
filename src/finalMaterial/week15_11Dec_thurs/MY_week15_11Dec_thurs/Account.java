@@ -54,7 +54,7 @@ public class Account {
         //assert that I met the postcondition
         assert _balance == oldBalance + amount;
 
-        globalAssers();
+        globalAsserts();
     }
 
     /*@
