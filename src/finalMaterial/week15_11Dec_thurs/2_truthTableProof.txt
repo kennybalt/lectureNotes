@@ -1,0 +1,6 @@
+Use a truth table to prove that the following argument is valid.
+
+Premises: p → q, q → ¬r
+Conclusion: p → ¬r
+
+

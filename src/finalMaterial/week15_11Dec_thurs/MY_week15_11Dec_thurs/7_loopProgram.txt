@@ -1,0 +1,79 @@
+At each "PREMISES" heading, list ALL claims we could make using the justification "Premise"
+
+At each "SHOW" heading, list the claim that we MUST prove for the program to be validated in Logika's manual mode
+    //(you don't have to prove it - just list what we want to prove)
+
+def diff(big: Z, small: Z): Z = {
+    Contract(
+        Requires( big >= small ),
+        Ensures ( Res[Z] == big-small )
+    )
+
+    //PREMISES:
+    big >= small
+
+
+    var count: Z = 0
+    var cur: Z = big
+
+    //PREMISES:
+
+
+
+    //SHOW:
+
+
+
+    while (cur != small) {
+        Invariant(
+            Modifies(count, cur),
+            count == (big-cur)
+        )
+
+        //PREMISES:
+
+
+
+        cur = cur - 1
+        count = count + 1
+
+        //SHOW:
+
+
+    }
+
+    //PREMISES:
+
+
+
+    //SHOW:
+
+
+
+    return count
+}
+
+/////////// Test code ////////////////
+
+var one: Z = 10
+
+//PREMISES:
+one == 10
+
+
+//SHOW:
+one+4 >= one
+
+var answer: Z = diff(one+4, one)
+
+
+
+//PREMISES:
+answer == (one+4)-one
+one == 10
+
+
+//SHOW:
+answer == 4
+
+assert(answer == 4)

@@ -1,0 +1,76 @@
+Today:
+- quick discussion of specifications in practice
+- review for final exam
+
+
+Office hour times during finals week.
+
+
+////////////////////////////////////
+
+
+What to do with preconditions and postconditions in practice?
+
+precondition violated?
+
+
+postcondition check?
+
+
+
+--> why might this would be preferable to only using test cases?
+
+
+
+See Java API
+
+/////////////////////////////
+
+Global invariants in practice.
+
+--> write globalsAssert method to assert each global invariant
+
+--> where should we call it?
+
+
+
+
+///////////////////////////////////////
+
+See Java Account example 
+
+//////////////////////////////////////
+
+Final exam: Thursday, December 16 2:00-3:50 in DUE 1109 (here)
+
+Closed notes, closed computers
+
+Cumulative. Similar format as previous exams.
+
+- recommend reviewing previous exams and practice exams
+- recommend reworking in-class and practice quizzes
+
+- final exam practice problems
+    --> these don't include all possible problem types
+    --> all topics include:
+        - all topics listed for Exam 1
+        - all topics listed for Exam 2
+        - all topics listed for Exam 3
+        - verifying programs with sequences
+        - verifying programs with global variables and global invariants
+        - termination
+
+
+(How to find list of topics from previous exams?)
+
+
+//////////////////////////////////
+
+Do sequence (#9), globals (#10), loop program (#7) first
+
+
+<-- then in-class quiz
+
+
+
+Continue practice problems

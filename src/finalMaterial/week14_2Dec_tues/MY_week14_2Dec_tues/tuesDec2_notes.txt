@@ -1,0 +1,180 @@
+Exam 3 results.
+
+Added 2 points to all scores
+
+High: 101/100 
+Average: 74/100 (Canvas reports lower, but a number of students skipped exam)
+
+A (90-100): 20 students
+B (80-89): 17 students
+C (70-79): 10 students
+D (60-69): 3 students
+F (below 60): 29 students (includes 8 skipped exams)
+
+
+Final exam: Tuesday, December 16 2:00-3:50 pm
+
+Canvas category: "midterm equivalent from final"
+
+
+////////////////////////////
+
+HW 11 will be posted after class, due Tues Dec 9
+    --> this is the last assignment
+    --> I HIGHLY recommend completing it 
+        (even if you are able to use it as one of your drops)
+
+
+
+/////////////////////////////
+
+Today:
+
+- Logika modes
+- Verifying programs with sequences
+
+
+Rest of semester:
+- Verifying programs with global invariants
+- Proving termination
+- If time, see how to do similar function contracts in Java
+
+//////////////////////////////
+
+Logika modes.
+
+Default/manual mode - what we've been doing.
+
+auto mode - only needs function contracts and invariant blocks.
+    --> can do all intermediate reasoning itself.
+
+--> Mode is defined in your "starter" files at the top
+
+
+
+For manual:
+
+    //@Logika: --manual
+
+
+For auto, that line is deleted
+
+
+
+**All HW 11 problems will use auto mode
+
+////////////////////////////
+
+Example: See what we can change in multiplication example
+    (mult_loop.sc)
+
+
+
+
+///////////////////////////
+
+Sequences. (like an array or list)
+
+--> see sequence operations (seqOp.sc)
+
+--> Want to ensure sequence position is always valid
+
+--> sequences are passed to a function by reference
+    --> postcondition should describe how a sequence changes
+
+///////////////////////////
+
+Making claims about sequences.
+
+Suppose "seq" is our sequence
+
+
+
+∀ (lower until upper)(k => some statement about seq(k) )
+    (does NOT include upper)
+
+
+∀ (0 until seq.size)(k => seq(k) == 0 )
+    
+    --> what does this say?
+
+
+
+∀ (lower to upper)(k => some statement about seq(k) )
+    (DOES include upper)
+
+
+
+Similarly, can use ∃
+
+∃ (0 until seq.size)(k => seq(k) == 0 )
+
+    --> what does this say?
+
+///////////////////////////
+
+Writing function contract for function with a sequence:
+
+- Requires:
+    - Sequence size?
+    - Index parameters?
+- Modifies: when needed?
+- Ensures:
+    - What to describe about sequence?
+    - What about return values?
+
+
+
+
+
+Use "In(seq)" refers to the state of a sequence at the
+    beginning of the function call
+
+
+
+///////////////////////////
+
+Example: function that sets first element in a sequence to 0
+(seqZeroFirst.sc)
+
+
+//////////////////////////
+
+in-class quiz
+
+///////////////////////////
+
+Example: function that sets some position in a sequence to 0
+(seqZeroPos.sc)
+
+///////////////////////////
+
+Example: swap function
+(swap.sc)
+
+///////////////////////////
+
+Functions with sequences and loops.
+--> same idea, but loop invariant block needs to:
+    - Describe what has been changed so far about the sequence
+    - (Often) describe what has NOT changed so far in the sequence
+    - Bound the loop counter
+    - State that the sequence size doesn't change (if changing the sequence)
+
+//////////////////////////
+
+Example: function that sets every position in a sequence to 10
+(seqAll10.sc)
+
+
+//////////////////////////
+
+--> what if instead setting everything to 10,
+    we added one to each element?
+
+//////////////////////////
+
+Next time:
+- More sequences and loops
+- Programs with multiple functions
+- Begin global invariants

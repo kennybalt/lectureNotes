@@ -1,0 +1,455 @@
+HW 11 due today
+
+--> last assignment
+--> highly recommend completing even if you plan to drop it
+
+
+////////////////////////////
+
+Final exam:
+    cumulative
+    a bit more emphasis on programming logic, content since exam 3
+    Tuesday, December 16 2:00-3:50
+    midterm equivalent in Canvas
+
+--> I'll post review material soon
+
+--> we'll spend some time Thursday reviewing
+
+//////////////////////////////
+
+looking for 1-2 CIS 301 UTAs and several CIS 200 UTAs for the spring
+(for CIS 200, specifically need help with the Mon/Wed 2:30-4:20 pm lab)
+
+email me (juliet@ksu.edu) if interested
+
+//////////////////////////////
+
+Problem 3 on HW 11: reverse a sequence
+
+
+What does it mean to be reversed?
+    ALL elements in the sequence
+        seq(k) == In(seq)(seq.size-k-1)
+
+After i iterations of the loop:
+    modifies (seq, i)
+    size doesn't change
+    bound the loop counter
+
+    what has changed?
+        first i elements have been swapped with the last i elements
+            from 0 until i have been swapped
+                seq(k) has corresponding value from end
+                    In(seq)(seq.size-k-1)
+
+            from 0 until i
+                In(seq)(k) has corresponding value from end
+                    seq(seq.size-k-1)
+
+
+
+    what is the same? 
+        from i until size-i
+
+
+
+///////////////////////////////////
+
+Problem 4 on HW 11 (sorted): model after containsElem
+
+can add a precondition about sequence size
+
+
+///////////////////////////////////
+
+Problem 6 on HW 11: Fan specification
+
+Fan speeds: 0-5
+Fan can be on (speeds 1-5) or off (speed 0)
+Fan can optionally rotate (but ONLY at speeds 3-5)
+
+Think of it as having two controls:
+    1) speed knob (becomes on when 1-5, off when 0)
+        --> can only change one speed level at a time
+
+    2) rotation lever
+
+--> since rotation is a DIFFERENT control, changing
+    speed can't change rotation
+
+
+Initially:
+    fan off
+    speed 0
+    rotate off
+
+Global invariants:
+    curSpeed >= 0,
+    curSpeed <= 5,
+    fanOn == true -> curSpeed > 0,
+    fanOn == false -> curSpeed == 0,
+    rotateOn == true -> curSpeed >= 3
+
+
+Functions:
+    setSpeed(speed: Z)
+    turnOn()
+    turnOff()
+    makeRotate()
+    stopRotate()
+
+
+
+    Fan on, speed 3, rotate on. Can we call setSpeed(2)?
+        NO. The fan is rotating and we can't rotate at a lower speed.
+
+    Fan off, speed 0, rotate off. Can we call setSpeed(1)?
+        Yes, and the fan should be marked on.
+
+    Fan on, speed 2, rotate off. Can we call setSpeed(0)?
+        NO. Can only change speed by 1 at a time.
+
+    Fan on, speed 3, rotate on. Can we call setSpeed(4)?
+        Yes.
+
+    Fan on, speed 3, rotate on. Can we call makeRotate()?
+        NO. The fan is already rotating.
+
+
+    Fan on, speed 5, rotate off. Can we call setSpeed(5)?
+        NO. We need to change the speed when calling setSpeed.
+
+
+    Fan on, speed 5, rotate off. Can we call setSpeed(6)?
+        NO. There is no speed 6.
+
+    Fan on, speed 1, rotate off. Can we call setSpeed(0)?
+        Yes, and the fan is now marked off.
+
+
+
+setSpeed(speed: Z) preconditions?
+    speed needs to be in 0-5 range
+    speed needs to be one more or one less than curSpeed
+    if rotate is on, speed needs to be 3 or greater
+
+
+    postconditions?
+        curSpeed changes to be the parameters
+
+///////////////////////////
+
+Today:
+- termination
+- Halting problem
+- program specification in practice
+- specifying Java programs with JML
+
+
+///////////////////////////
+
+Termination - whether a program will finish on all inputs
+
+
+Partial Correctness:
+    IF the precondition is satisfied
+    THEN we guarantee the postcondition, but only IF 
+        the program terminates
+
+
+Total Correctness:
+    IF the precondition is satisfied
+    THEN we guarantee the postcondition AND termination
+
+
+We need to show termination to achieve total correctness
+
+
+
+////////////////////////////////////////
+
+Termination with a loop.
+    - create measure of how much work is left
+        (i.e., how many iterations are left)
+        --> should be a nonnegative integer
+
+    - show that the measure DECREASES with each iteration
+
+    - show that if there is no more work to do, then the loop
+        has finished
+
+    - see example
+
+
+
+Termination with recursion.
+    - can use induction
+    - see example
+
+
+
+Collatz function.
+
+
+
+////////////////////////////////////////
+
+Decidability - whether a problem can be decided one way or another
+
+Halting problem - given a computer program and a set of inputs
+    can you write another program to determine if the original
+    program will halt on those inputs?
+
+
+Assume, for the sake of contradiction, that we CAN write a program
+that will take another program + set of inputs and determine whether
+that program will terminate on those inputs.
+
+def Halt(Function, Input):
+    if (Function(Input) halts) return true
+    else return false
+
+Then we can write:
+
+def DoOpposite(Function):
+    if (Halt(Function, Function)): loop forever
+    else return (i.e., halt)
+
+
+Then consider DoOpposite(DoOpposite).
+    Case 1: DoOpposite(DoOpposite) loops forever. Then
+        Halt(DoOpposite, DoOpposite) returns true. Then
+        DoOpposite(DoOpposite) halted. This is a contradiction
+        with our assumption that it looped forever.
+
+    Case 2: DoOpposite(DoOpposite) halts. Then Halt(DoOpposite, DoOpposite)
+        must have returned false. Then DoOpposite(DoOpposite) must have
+        NOT halted. This is another contradiction with our earlier
+        assuption that DoOpposite(DoOpposite) halted.
+
+Both cases ended in a contradiction, so our original assumption
+that we could write a Halt function is false.
+
+///////////////////////////
+
+Review: global invariants.
+
+If a file has global invariants.
+
+--> when do they need to hold?
+    Initially
+    Before each function call
+    At the end of each function call
+
+
+
+--> how to write function contracts for function that change 
+    global variables?
+
+requires?
+    Make sure to only allow parameters that wouldn't violate
+    global invariants
+
+
+modifies? say it's modifying those global variables
+
+
+ensures?
+    how the global variables have changed as a result of the function cal
+
+
+//////////////////////////
+
+(in-class quiz)
+
+///////////////////////////
+
+Binary search bug.
+
+
+    int mid = (low+high)/2;
+
+
+--> what's the problem? how to fix?
+    int mid = low + (high-low)/2
+
+    
+
+
+--> how long was it there? original C++ (in 80s)
+    in Java until 2006
+
+
+
+///////////////////
+
+Timsort bug (Java's Collections sort / Arrays.Sort / Python's sort)
+    - developed in 2002
+    - breaks array into series of runs that are separately sorted
+        and merged
+
+
+--> bug discovered when researchers tried to prove correctness 
+    in 2015...and were unsuccessful
+
+--> would crash in certain cases when the run lengths became smaller
+    than expected
+
+
+http://envisage-project.eu/proving-android-java-and-python-sorting-algorithm-is-broken-and-how-to-fix-it/
+
+
+///////////////////////////
+
+<-- stopped here, will continue on Thursday
+
+///////////////////////////
+
+Java Modeling Language (JML)
+
+    --> There are tools (OpenJML and KeY) that can do
+        formal verification of Java programs
+
+    - can verify correctness if you provide JML specifications for:
+        - function contracts
+        - for loops:
+            - loop invariants
+            - termination measure
+
+    https://www.openjml.org/tutorial/
+    https://www.key-project.org/applications/program-verification/
+
+    --> They are sometimes used to verify Java library functions
+
+
+///////////////////////////////
+
+JML specification syntax.
+
+See jmlSyntax.txt for a primer
+
+
+
+
+IntelliJML - does some JML syntax checking
+
+https://gitlab.utwente.nl/fmt/intellijml/-/releases
+
+Download the IntelliJ-1.1.8.jar file
+
+In IntelliJ, File->Settings->Plugins, click the gear, select
+    "Load Plugin from Disk", find the jar file
+
+
+
+////////////////////////////////////
+
+
+Complete formal verification is not practical in many cases
+
+Halfway option
+
+- Write a formal specification (avoids ambiguity) that
+    *could* be used with a verification tool
+- Enforce preconditions
+- Check postconditions
+
+/////////////////////////////////
+
+Whose job is it to check preconditions?
+
+    --> ...can we enforce in practice?
+
+
+    --> What to do if preconditions not met? Return a dummy
+        value?
+
+
+
+
+How to check postconditions?
+
+
+
+
+--> why might this would be preferable to only using test cases?
+
+
+
+/////////////////////////////
+
+JMLExample.java
+
+
+- add function contract checks to each method
+
+
+
+///////////////////////////////////////
+
+Global invariants in practice.
+
+--> write globalsAssert method to assert each global invariant
+
+--> where should we call it?
+
+
+
+
+///////////////////////////////////////
+
+See Account example (similar to what we did with Logika)
+
+//////////////////////////////////////
+
+Best practices outside class
+
+- write global invariants
+    - considerations for method parameters?
+
+    - considerations for method code?
+
+
+
+- write preconditions and postconditions for all methods
+    - throw exceptions if your preconditions aren't met
+
+
+
+Next level:
+- add asserts that global invariants still true at method end
+
+- add asserts for postconditions
+
+
+--> be careful with documentation
+
+
+//////////////////////////////////////
+
+Content of CIS 575.
+
+
+To prove correctness of a function:
+
+   - function contract (preconditions and postconditions)
+   - loop invariant for any loops
+        - describe progress loop has made so far
+        - bound the loop counter
+        - describe measure of work (for termination)
+
+
+The process of proving correctness of a non-Logika algorithm
+or function is EXACTLY the same approach we used in Logika.
+
+
+--> What approach is that?
+
+
+
+
+
+//////////////////////////////////
+
+Next time: review for final

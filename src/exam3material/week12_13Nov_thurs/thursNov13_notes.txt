@@ -1,4 +1,6 @@
 HW 10 due Tuesday, November 18
+    Typo: problem 2 should have "x" as the function parameter, not "num"
+
 
 Exam 3 is Thursday, November 20
     - will post details by the end of the week
@@ -20,18 +22,27 @@ Recursive functions
 
 if (base case condition) {
     answer = (something)
+
+    //prove the postconditions
 } else {
 
     //what to do here?
 
+    //we must prove the preconditions (requires) for the function
+
     recursive call
 
     //what can we do here?
+    //use the postconditions (ensures) as premises
 
     answer = (something)
+
+    //prove the postconditions
 }
 
 //if we want some postcondition after an if/else, what do we do?
+//answer == something (maybe this is the postcondition)
+//prove that postcondition in the if and in the else
 
 return answer
 
@@ -60,8 +71,16 @@ while (condition) {
 
 <-- what do we know here?
 
+condition is false
+
+
+
 <-- why is this more challenging than if-statements?
 
+
+need: loop invariants
+should be true before loop begins
+should be true at end of each iteration
 
 //////////////////////////////
 
@@ -80,23 +99,29 @@ Steps to proving correctness of a loop:
 1) Prove the invariant is true before the loop begins
 
     (what is this like in mathematical induction?)
-
+    base case
 
 
 2) Assume the invariant is true at the beginning of an iteration.
     Prove the invariant still holds at the end of the iteration.
 
     (what is this like in mathematical induction?)
+    inductive Steps
+
+    the assume is like the inductive hypothesis
 
 
 
 /////////////////////////
 
 When loop ends, you know two things:
-    1) About the invariant? 
+    1) About the invariant?  true! we proved it is true at the end 
+        of each iteration, and after the loop is at the end of 
+        the last iteration
 
 
-    2) About the loop condition? 
+    2) About the loop condition? false! we exited the loop, so its 
+        condition must be false
 
 
 
@@ -136,13 +161,18 @@ Example: see code for multiplication with repeated addition
 
 --> can we use the function contract from recursive implementation?
 
+yes
 
 
 ////////////////////
 
---> should the test cases/asserts be different?
+--> should the test cases/asserts be different? no
 
+///////////////////
 
+<-- stopped here, will continue on Tuesday
+
+///////////////////
 
 --> what if the loop condition was "i < y" instead?
 
