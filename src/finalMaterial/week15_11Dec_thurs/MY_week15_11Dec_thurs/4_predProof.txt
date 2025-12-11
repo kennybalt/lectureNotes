@@ -12,6 +12,25 @@ Proof(
   2 ( ¬(∃ ((x: T) => Q(x) )) ) by Premise,
 
   //COMPLETE THE PROOF
-
+  3 ((Let (random: T) => SubProof(
+    //plug in our individual into our for all
+    4 ( P(random) V Q(random) by AllE[T](1) 
+    
+    //try OrE on line 4
+    5 SubProof(
+      6 Assume (P(random)),
+    ),
+    7 SubProof(
+      8 Assume (Q(random)),
+      9 (∃ ((x: T) => Q(x) ))) by ExistsI[T](8),
+      10 (F) by NegE(9, 2)
+      11 (P(Random)) by BottomE(10)
+      //goal: P(random)  
+    ),
+    12 (P(random)) by OrE(4, 5, 7)
+    //goal: P(random)
+  )),
+  13 (∀ ((x: T) => P(x)) by AllI[T](3)
+  //afterwards, use ALLI
 
 )
