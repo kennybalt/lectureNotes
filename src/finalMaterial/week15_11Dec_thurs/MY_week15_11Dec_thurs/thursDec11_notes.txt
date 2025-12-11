@@ -12,14 +12,14 @@ Office hour times during finals week.
 What to do with preconditions and postconditions in practice?
 
 precondition violated?
-
+    function will throw an exception (and leave)
+    so that we only complete function if precondition was met
 
 postcondition check?
-
-
+    assert postcondition
 
 --> why might this would be preferable to only using test cases?
-
+    unit tests are difficult to write
 
 
 See Java API
@@ -32,8 +32,8 @@ Global invariants in practice.
 
 --> where should we call it?
 
-
-
+at the beginning of a function
+at the end of a function
 
 ///////////////////////////////////////
 
@@ -47,7 +47,7 @@ Closed notes, closed computers
 
 Cumulative. Similar format as previous exams.
 
-- recommend reviewing previous exams and practice exams
+- recommend reviewing previous exams and practice exams (LOOK AT EXAM INFORMATION PAGE ON CANVAS)
 - recommend reworking in-class and practice quizzes
 
 - final exam practice problems
@@ -66,7 +66,7 @@ Cumulative. Similar format as previous exams.
 
 //////////////////////////////////
 
-Do sequence (#9), globals (#10), loop program (#7) first
+Do **sequence (#9), **globals (#10), **loop/function program (#7) first
 
 
 <-- then in-class quiz
